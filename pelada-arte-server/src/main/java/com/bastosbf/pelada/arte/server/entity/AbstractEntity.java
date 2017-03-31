@@ -4,11 +4,13 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.NotNull;
 
 @MappedSuperclass
 public abstract class AbstractEntity {
 	@Id
 	@GeneratedValue
+	@NotNull
 	@Column(name = "id")
 	private Long id;
 

@@ -24,15 +24,19 @@ public abstract class PeladaMapperDecorator implements PeladaMapper {
 	@Override
 	public PeladaDto entityToDto(Pelada source) {
 		PeladaDto dto = delegate.entityToDto(source);
-		dto.setOwner(source.getOwner().getId());
-		dto.setPlayers(source.getPlayers().stream().map(Player::getId).collect(toSet()));
+		if (dto != null) {
+			dto.setOwner(source.getOwner().getId());
+			dto.setPlayers(source.getPlayers().stream().map(Player::getId).collect(toSet()));
+		}
 		return dto;
 	}
 
 	@Override
 	public Pelada dtoToEntity(PeladaDto source) {
 		Pelada entity = delegate.dtoToEntity(source);
-		entity.setPlayers(new HashSet<>(playerRepository.findAll(source.getPlayers())));
+		if (entity != null) {
+			entity.setPlayers(new HashSet<>(playerRepository.findAll(source.getPlayers())));
+		}
 		return entity;
 	}
 }

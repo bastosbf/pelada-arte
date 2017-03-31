@@ -4,26 +4,24 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.bastosbf.pelada.arte.server.entity.AbstractEntity;
 
 @Entity
 @Table(name = "player")
 public class Player extends AbstractEntity {
-	@Id
-	@GeneratedValue
-	@Column(name = "id")
-	private Long id;
+	@NotNull
 	@Column(name = "uid", unique = true, nullable = false)
 	private String uid;
+	@NotNull
 	@Column(name = "email", unique = true, nullable = false)
 	private String email;
+	@NotNull
 	@Column(name = "name", nullable = false)
 	private String name;
 	@ManyToMany
@@ -31,14 +29,6 @@ public class Player extends AbstractEntity {
 			@JoinColumn(name = "player", nullable = false, updatable = false) }, inverseJoinColumns = {
 					@JoinColumn(name = "pelada", nullable = false, updatable = false) })
 	private Set<Pelada> peladas;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getUid() {
 		return uid;

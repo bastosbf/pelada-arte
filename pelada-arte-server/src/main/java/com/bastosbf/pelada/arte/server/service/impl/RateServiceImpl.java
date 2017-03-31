@@ -16,7 +16,7 @@ public class RateServiceImpl implements RateService {
 	private RateRepository rateRepository;
 
 	@Autowired
-	private RateMapper rateMap;
+	private RateMapper rateMapper;
 
 	@Override
 	public JpaRepository<Rate, Long> getRepository() {
@@ -25,7 +25,7 @@ public class RateServiceImpl implements RateService {
 
 	@Override
 	public AbstractMapper<Rate, RateDto> getMapper() {
-		return rateMap;
+		return rateMapper;
 	}
 
 }

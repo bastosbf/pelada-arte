@@ -9,19 +9,24 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.bastosbf.pelada.arte.server.entity.AbstractEntity;
 
 @Entity
 @Table(name = "pelada")
 public class Pelada extends AbstractEntity {
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "owner", nullable = false)
 	private Player owner;
+	@NotNull
 	@Column(name = "name", nullable = false)
 	private String name;
+	@NotNull
 	@Column(name = "day_of_the_week", nullable = false)
 	private Character dayOfTheWeek;
+	@NotNull
 	@Column(name = "time", nullable = false)
 	private LocalTime time;
 	@ManyToMany(mappedBy = "peladas")

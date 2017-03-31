@@ -16,7 +16,7 @@ public class PlayerServiceImpl implements PlayerService {
 	private PlayerRepository playerRepository;
 
 	@Autowired
-	private PlayerMapper playerMap;
+	private PlayerMapper playerMapper;
 
 	@Override
 	public JpaRepository<Player, Long> getRepository() {
@@ -25,7 +25,7 @@ public class PlayerServiceImpl implements PlayerService {
 
 	@Override
 	public AbstractMapper<Player, PlayerDto> getMapper() {
-		return playerMap;
+		return playerMapper;
 	}
 
 }

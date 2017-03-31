@@ -2,13 +2,20 @@ package com.bastosbf.pelada.arte.server.dto.impl;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.NotNull;
+
 import com.bastosbf.pelada.arte.server.dto.AbstractDto;
 
 public class RateDto extends AbstractDto {
+	@NotNull
 	private Long pelada;
+	@NotNull
 	private LocalDate date;
+	@NotNull
 	private Long rateFrom;
+	@NotNull
 	private Long rateTo;
+	@NotNull
 	private Float rate;
 
 	public Long getPelada() {

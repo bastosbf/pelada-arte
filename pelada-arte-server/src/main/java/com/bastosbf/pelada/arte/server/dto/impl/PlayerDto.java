@@ -2,11 +2,16 @@ package com.bastosbf.pelada.arte.server.dto.impl;
 
 import java.util.Set;
 
+import javax.validation.constraints.NotNull;
+
 import com.bastosbf.pelada.arte.server.dto.AbstractDto;
 
 public class PlayerDto extends AbstractDto {
+	@NotNull
 	private String uid;
+	@NotNull
 	private String email;
+	@NotNull
 	private String name;
 	private Set<Long> peladas;
 

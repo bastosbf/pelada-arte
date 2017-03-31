@@ -24,14 +24,18 @@ public abstract class PlayerMapperDecorator implements PlayerMapper {
 	@Override
 	public PlayerDto entityToDto(Player source) {
 		PlayerDto dto = delegate.entityToDto(source);
-		dto.setPeladas(source.getPeladas().stream().map(Pelada::getId).collect(toSet()));
+		if (dto != null) {
+			dto.setPeladas(source.getPeladas().stream().map(Pelada::getId).collect(toSet()));
+		}
 		return dto;
 	}
 
 	@Override
 	public Player dtoToEntity(PlayerDto source) {
 		Player entity = delegate.dtoToEntity(source);
-		entity.setPeladas(new HashSet<>(peladaRepository.findAll(source.getPeladas())));
+		if (entity != null) {
+			entity.setPeladas(new HashSet<>(peladaRepository.findAll(source.getPeladas())));
+		}
 		return entity;
 	}
 }

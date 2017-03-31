@@ -16,7 +16,7 @@ public class PeladaServiceImpl implements PeladaService {
 	private PeladaRepository peladaRepository;
 
 	@Autowired
-	private PeladaMapper peladaMap;
+	private PeladaMapper peladaMapper;
 
 	@Override
 	public JpaRepository<Pelada, Long> getRepository() {
@@ -25,7 +25,7 @@ public class PeladaServiceImpl implements PeladaService {
 
 	@Override
 	public AbstractMapper<Pelada, PeladaDto> getMapper() {
-		return peladaMap;
+		return peladaMapper;
 	}
 
 }

@@ -3,12 +3,18 @@ package com.bastosbf.pelada.arte.server.dto.impl;
 import java.time.LocalTime;
 import java.util.Set;
 
+import javax.validation.constraints.NotNull;
+
 import com.bastosbf.pelada.arte.server.dto.AbstractDto;
 
 public class PeladaDto extends AbstractDto {
+	@NotNull
 	private Long owner;
+	@NotNull
 	private String name;
+	@NotNull
 	private Character dayOfTheWeek;
+	@NotNull
 	private LocalTime time;
 	private Set<Long> players;
 

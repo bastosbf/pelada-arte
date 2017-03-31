@@ -23,18 +23,22 @@ public abstract class RateMapperDecorator implements RateMapper {
 	@Override
 	public RateDto entityToDto(Rate source) {
 		RateDto dto = delegate.entityToDto(source);
-		dto.setPelada(source.getPelada().getId());
-		dto.setRateFrom(source.getRateFrom().getId());
-		dto.setRateTo(source.getRateTo().getId());
+		if (dto != null) {
+			dto.setPelada(source.getPelada().getId());
+			dto.setRateFrom(source.getRateFrom().getId());
+			dto.setRateTo(source.getRateTo().getId());
+		}
 		return dto;
 	}
 
 	@Override
 	public Rate dtoToEntity(RateDto source) {
 		Rate entity = delegate.dtoToEntity(source);
-		entity.setPelada(peladaRepository.findOne(source.getPelada()));
-		entity.setRateFrom(playerRepository.findOne(source.getRateFrom()));
-		entity.setRateTo(playerRepository.findOne(source.getRateTo()));
+		if (entity != null) {
+			entity.setPelada(peladaRepository.findOne(source.getPelada()));
+			entity.setRateFrom(playerRepository.findOne(source.getRateFrom()));
+			entity.setRateTo(playerRepository.findOne(source.getRateTo()));
+		}
 		return entity;
 	}
 }
